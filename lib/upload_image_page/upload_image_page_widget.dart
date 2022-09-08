@@ -141,6 +141,7 @@ class _UploadImagePageWidgetState extends State<UploadImagePageWidget> {
                                 )
                               ],
                               borderRadius: BorderRadius.circular(8),
+                              shape: BoxShape.rectangle,
                             ),
                           ),
                         ),

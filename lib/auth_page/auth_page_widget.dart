@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -18,8 +19,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
   TextEditingController? passwordController;
   late bool passwordVisibility;
   TextEditingController? emailAddressCreateController;
+  TextEditingController? usernameController;
   TextEditingController? passwordCreateController;
   late bool passwordCreateVisibility;
+  TextEditingController? passwordConfirmController;
+  late bool passwordConfirmVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -29,8 +33,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
     passwordController = TextEditingController();
     passwordVisibility = false;
     emailAddressCreateController = TextEditingController();
+    usernameController = TextEditingController();
     passwordCreateController = TextEditingController();
     passwordCreateVisibility = false;
+    passwordConfirmController = TextEditingController();
+    passwordConfirmVisibility = false;
   }
 
   @override
@@ -314,6 +321,50 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 20, 20, 0),
                                         child: TextFormField(
+                                          controller: usernameController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2,
+                                            hintText: 'Enter your name...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2,
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 24, 20, 24),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF0F1113),
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 20, 20, 0),
+                                        child: TextFormField(
                                           controller:
                                               emailAddressCreateController,
                                           obscureText: false,
@@ -420,9 +471,88 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 12, 20, 0),
+                                        child: TextFormField(
+                                          controller: passwordConfirmController,
+                                          obscureText:
+                                              !passwordConfirmVisibility,
+                                          decoration: InputDecoration(
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2,
+                                            hintText:
+                                                'Re-enter your password...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2,
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 24, 20, 24),
+                                            suffixIcon: InkWell(
+                                              onTap: () => setState(
+                                                () => passwordConfirmVisibility =
+                                                    !passwordConfirmVisibility,
+                                              ),
+                                              focusNode: FocusNode(
+                                                  skipTraversal: true),
+                                              child: Icon(
+                                                passwordConfirmVisibility
+                                                    ? Icons.visibility_outlined
+                                                    : Icons
+                                                        .visibility_off_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20,
+                                              ),
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF0F1113),
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 24, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
+                                            if (passwordCreateController
+                                                    ?.text !=
+                                                passwordConfirmController
+                                                    ?.text) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Passwords don\'t match!',
+                                                  ),
+                                                ),
+                                              );
+                                              return;
+                                            }
+
                                             final user =
                                                 await createAccountWithEmail(
                                               context,
@@ -433,6 +563,19 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             if (user == null) {
                                               return;
                                             }
+
+                                            final usersCreateData =
+                                                createUsersRecordData(
+                                              createdTime: getCurrentTimestamp,
+                                              email:
+                                                  emailAddressCreateController!
+                                                      .text,
+                                              displayName:
+                                                  usernameController!.text,
+                                            );
+                                            await UsersRecord.collection
+                                                .doc(user.uid)
+                                                .update(usersCreateData);
 
                                             await Navigator.pushAndRemoveUntil(
                                               context,

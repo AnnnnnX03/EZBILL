@@ -33,40 +33,10 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.photoUrl;
-    if (value != null) {
-      result
-        ..add('photo_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.uid;
     if (value != null) {
       result
         ..add('uid')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.ownSpace;
-    if (value != null) {
-      result
-        ..add('own_space')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(String)])));
-    }
-    value = object.rentSpace;
-    if (value != null) {
-      result
-        ..add('rent_space')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(String)])));
-    }
-    value = object.password;
-    if (value != null) {
-      result
-        ..add('password')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -81,6 +51,21 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
     if (value != null) {
       result
         ..add('phone_number')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.photos;
+    if (value != null) {
+      result
+        ..add('photos')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
+    value = object.photoUrl;
+    if (value != null) {
+      result
+        ..add('photo_url')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -114,28 +99,8 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.displayName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'photo_url':
-          result.photoUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'uid':
           result.uid = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'own_space':
-          result.ownSpace.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object?>);
-          break;
-        case 'rent_space':
-          result.rentSpace.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object?>);
-          break;
-        case 'password':
-          result.password = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'created_time':
@@ -144,6 +109,16 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           break;
         case 'phone_number':
           result.phoneNumber = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'photos':
+          result.photos.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'photo_url':
+          result.photoUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -165,19 +140,15 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? displayName;
   @override
-  final String? photoUrl;
-  @override
   final String? uid;
-  @override
-  final BuiltList<String>? ownSpace;
-  @override
-  final BuiltList<String>? rentSpace;
-  @override
-  final String? password;
   @override
   final DateTime? createdTime;
   @override
   final String? phoneNumber;
+  @override
+  final BuiltList<String>? photos;
+  @override
+  final String? photoUrl;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -187,13 +158,11 @@ class _$UsersRecord extends UsersRecord {
   _$UsersRecord._(
       {this.email,
       this.displayName,
-      this.photoUrl,
       this.uid,
-      this.ownSpace,
-      this.rentSpace,
-      this.password,
       this.createdTime,
       this.phoneNumber,
+      this.photos,
+      this.photoUrl,
       this.ffRef})
       : super._();
 
@@ -210,13 +179,11 @@ class _$UsersRecord extends UsersRecord {
     return other is UsersRecord &&
         email == other.email &&
         displayName == other.displayName &&
-        photoUrl == other.photoUrl &&
         uid == other.uid &&
-        ownSpace == other.ownSpace &&
-        rentSpace == other.rentSpace &&
-        password == other.password &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
+        photos == other.photos &&
+        photoUrl == other.photoUrl &&
         ffRef == other.ffRef;
   }
 
@@ -227,18 +194,12 @@ class _$UsersRecord extends UsersRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, email.hashCode),
-                                        displayName.hashCode),
-                                    photoUrl.hashCode),
-                                uid.hashCode),
-                            ownSpace.hashCode),
-                        rentSpace.hashCode),
-                    password.hashCode),
-                createdTime.hashCode),
-            phoneNumber.hashCode),
+                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
+                            uid.hashCode),
+                        createdTime.hashCode),
+                    phoneNumber.hashCode),
+                photos.hashCode),
+            photoUrl.hashCode),
         ffRef.hashCode));
   }
 
@@ -247,13 +208,11 @@ class _$UsersRecord extends UsersRecord {
     return (newBuiltValueToStringHelper(r'UsersRecord')
           ..add('email', email)
           ..add('displayName', displayName)
-          ..add('photoUrl', photoUrl)
           ..add('uid', uid)
-          ..add('ownSpace', ownSpace)
-          ..add('rentSpace', rentSpace)
-          ..add('password', password)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
+          ..add('photos', photos)
+          ..add('photoUrl', photoUrl)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -270,28 +229,9 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get displayName => _$this._displayName;
   set displayName(String? displayName) => _$this._displayName = displayName;
 
-  String? _photoUrl;
-  String? get photoUrl => _$this._photoUrl;
-  set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
-
   String? _uid;
   String? get uid => _$this._uid;
   set uid(String? uid) => _$this._uid = uid;
-
-  ListBuilder<String>? _ownSpace;
-  ListBuilder<String> get ownSpace =>
-      _$this._ownSpace ??= new ListBuilder<String>();
-  set ownSpace(ListBuilder<String>? ownSpace) => _$this._ownSpace = ownSpace;
-
-  ListBuilder<String>? _rentSpace;
-  ListBuilder<String> get rentSpace =>
-      _$this._rentSpace ??= new ListBuilder<String>();
-  set rentSpace(ListBuilder<String>? rentSpace) =>
-      _$this._rentSpace = rentSpace;
-
-  String? _password;
-  String? get password => _$this._password;
-  set password(String? password) => _$this._password = password;
 
   DateTime? _createdTime;
   DateTime? get createdTime => _$this._createdTime;
@@ -300,6 +240,15 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? _phoneNumber;
   String? get phoneNumber => _$this._phoneNumber;
   set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
+
+  ListBuilder<String>? _photos;
+  ListBuilder<String> get photos =>
+      _$this._photos ??= new ListBuilder<String>();
+  set photos(ListBuilder<String>? photos) => _$this._photos = photos;
+
+  String? _photoUrl;
+  String? get photoUrl => _$this._photoUrl;
+  set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -314,13 +263,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
     if ($v != null) {
       _email = $v.email;
       _displayName = $v.displayName;
-      _photoUrl = $v.photoUrl;
       _uid = $v.uid;
-      _ownSpace = $v.ownSpace?.toBuilder();
-      _rentSpace = $v.rentSpace?.toBuilder();
-      _password = $v.password;
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
+      _photos = $v.photos?.toBuilder();
+      _photoUrl = $v.photoUrl;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -348,21 +295,17 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
           new _$UsersRecord._(
               email: email,
               displayName: displayName,
-              photoUrl: photoUrl,
               uid: uid,
-              ownSpace: _ownSpace?.build(),
-              rentSpace: _rentSpace?.build(),
-              password: password,
               createdTime: createdTime,
               phoneNumber: phoneNumber,
+              photos: _photos?.build(),
+              photoUrl: photoUrl,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'ownSpace';
-        _ownSpace?.build();
-        _$failedField = 'rentSpace';
-        _rentSpace?.build();
+        _$failedField = 'photos';
+        _photos?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'UsersRecord', _$failedField, e.toString());

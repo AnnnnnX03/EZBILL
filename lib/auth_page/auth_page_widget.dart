@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../forgot_password/forgot_password_widget.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +17,23 @@ class AuthPageWidget extends StatefulWidget {
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
   TextEditingController? emailAddressController;
+
   TextEditingController? passwordController;
+
   late bool passwordVisibility;
+
   TextEditingController? emailAddressCreateController;
+
   TextEditingController? usernameController;
+
   TextEditingController? passwordCreateController;
+
   late bool passwordCreateVisibility;
+
   TextEditingController? passwordConfirmController;
+
   late bool passwordConfirmVisibility;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -148,6 +158,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8),
                                               ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
                                               filled: true,
                                               fillColor: Colors.white,
                                               contentPadding:
@@ -189,6 +216,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Colors.white,
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -281,9 +325,14 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 20, 0, 0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print(
-                                                  'Button-ForgotPassword pressed ...');
+                                            onPressed: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ForgotPasswordWidget(),
+                                                ),
+                                              );
                                             },
                                             text: 'Forgot Password?',
                                             options: FFButtonOptions(
@@ -347,6 +396,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                             ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
                                             filled: true,
                                             fillColor: Colors.white,
                                             contentPadding:
@@ -392,6 +458,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                             ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
                                             filled: true,
                                             fillColor: Colors.white,
                                             contentPadding:
@@ -432,6 +515,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
                                                 width: 1,
                                               ),
                                               borderRadius:
@@ -496,6 +596,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
                                                 width: 1,
                                               ),
                                               borderRadius:

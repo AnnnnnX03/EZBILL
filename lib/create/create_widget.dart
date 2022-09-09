@@ -1,4 +1,3 @@
-import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -15,10 +14,12 @@ class CreateWidget extends StatefulWidget {
 }
 
 class _CreateWidgetState extends State<CreateWidget> {
-  String? houseTypeValue;
   TextEditingController? hostController;
+
   TextEditingController? houseNameController;
+
   TextEditingController? locationController;
+
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -110,6 +111,20 @@ class _CreateWidgetState extends State<CreateWidget> {
                             ),
                             borderRadius: BorderRadius.circular(8),
                           ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                           contentPadding:
                               EdgeInsetsDirectional.fromSTEB(20, 32, 20, 12),
                         ),
@@ -142,38 +157,26 @@ class _CreateWidgetState extends State<CreateWidget> {
                             ),
                             borderRadius: BorderRadius.circular(8),
                           ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                           contentPadding:
                               EdgeInsetsDirectional.fromSTEB(20, 32, 20, 12),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1,
                         textAlign: TextAlign.start,
                         maxLines: 1,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                      child: FlutterFlowDropDown(
-                        options: ['Apartment', 'House'],
-                        onChanged: (val) =>
-                            setState(() => houseTypeValue = val),
-                        width: double.infinity,
-                        height: 60,
-                        textStyle: FlutterFlowTheme.of(context).bodyText1,
-                        hintText: 'House Type',
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 15,
-                        ),
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 2,
-                        borderColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        borderWidth: 2,
-                        borderRadius: 8,
-                        margin: EdgeInsetsDirectional.fromSTEB(24, 4, 12, 4),
-                        hidesUnderline: true,
                       ),
                     ),
                     Padding(
@@ -196,6 +199,20 @@ class _CreateWidgetState extends State<CreateWidget> {
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(8),

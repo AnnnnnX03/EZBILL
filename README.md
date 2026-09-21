@@ -25,7 +25,7 @@ A mobile app concept for splitting shared utility bills between roommates — bu
 Splitting shared utility bills between roommates in a group chat or spreadsheet gets messy fast — no shared record of who's paid, what the bill was for, or any proof of the original bill. This was a university project exploring what a lightweight shared-house billing app could look like.
 
 ## What it does
-
+<img src="image/ezbill-logo.png" width="400" alt="Dashboard screenshot">
 - **User accounts** — sign in via email/password, Google, Apple, or anonymously, via Firebase Auth
 - **Rooms** — a shared space per household where bills are logged and visible to everyone in it
 - **Bill entry** — log a bill by utility type (e.g. electricity, water, internet) with details, and attach a photo of the actual bill (camera or gallery) as a record
